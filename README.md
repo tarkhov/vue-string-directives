@@ -1,1 +1,1 @@
-# vue-string-directives
+# Vue string directives
