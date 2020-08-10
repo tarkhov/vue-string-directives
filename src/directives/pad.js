@@ -1,6 +1,6 @@
 export default {
   componentUpdated: function (el, binding) {
-    if (binding.arg) {
+    if (el.value.length && binding.arg) {
       const chars = binding.value ? binding.value : ' '
       if (binding.modifiers?.start) {
         el.value = el.value.padStart(binding.arg, chars)

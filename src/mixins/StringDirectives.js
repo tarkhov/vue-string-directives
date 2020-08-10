@@ -7,7 +7,6 @@ import pad from '../directives/pad'
 import repeat from '../directives/repeat'
 import replace from '../directives/replace'
 import snake from '../directives/snake'
-import start from '../directives/start'
 import truncate from '../directives/truncate'
 import upper from '../directives/upper'
 
@@ -22,7 +21,6 @@ export default {
     repeat,
     replace,
     snake,
-    start,
     truncate,
     upper
   }

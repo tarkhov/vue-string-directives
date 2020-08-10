@@ -1,7 +1,9 @@
+import upperFirst from '../helpers/upperFirst'
+
 export default {
   componentUpdated: function (el, binding) {
-    if (typeof binding.value === 'undefined' || binding.value) {
-      el.value = el.value.charAt(0).toUpperCase() + el.value.slice(1).toLowerCase()
+    if (el.value.length && typeof binding.value === 'undefined' || binding.value) {
+      el.value = upperFirst(el.value, true)
     }
   }
 }
