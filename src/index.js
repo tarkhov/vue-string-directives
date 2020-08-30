@@ -1,6 +1,5 @@
 import camel from './directives/camel'
 import capitalize from './directives/capitalize'
-import deburr from './directives/deburr'
 import kebab from './directives/kebab'
 import lower from './directives/lower'
 import pad from './directives/pad'
@@ -14,7 +13,6 @@ export default {
   install (Vue) {
     Vue.directive('camel', camel)
     Vue.directive('capitalize', capitalize)
-    Vue.directive('deburr', deburr)
     Vue.directive('kebab', kebab)
     Vue.directive('lower', lower)
     Vue.directive('pad', pad)
