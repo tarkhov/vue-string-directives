@@ -1,6 +1,6 @@
 export default function (string, numbers = true) {
   let regExp = '[\\p{L}'
-  if (numbers === true) {
+  if (numbers) {
     regExp += '\\p{N}'
   }
   regExp += ']+'
