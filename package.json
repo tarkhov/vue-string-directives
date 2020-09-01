@@ -1,0 +1,37 @@
+{
+  "name": "vue-string-directives",
+  "version": "0.1.0",
+  "description": "Vue string directives.",
+  "main": "index.js",
+  "keywords": [
+    "js",
+    "javascript",
+    "vue",
+    "vuejs",
+    "nuxt",
+    "nuxtjs"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarkhov/vue-string-directives.git"
+  },
+  "author": "Alexander Tarkhov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarkhov/vue-string-directives/issues"
+  },
+  "homepage": "https://tarkhov.github.io/vue-string-directives/",
+  "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.3"
+  }
+}
