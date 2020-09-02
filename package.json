@@ -2,14 +2,16 @@
   "name": "vue-string-directives",
   "version": "0.1.0",
   "description": "Vue string directives.",
-  "main": "index.js",
+  "main": "dist/vue-string-directives.common.js",
   "keywords": [
     "js",
     "javascript",
     "vue",
     "vuejs",
     "nuxt",
-    "nuxtjs"
+    "nuxtjs",
+    "directive",
+    "string"
   ],
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
