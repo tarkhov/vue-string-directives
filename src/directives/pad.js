@@ -1,3 +1,5 @@
+import pad from '../helpers/pad'
+
 export default {
   componentUpdated: function (el, binding) {
     if (el.value.length && binding.arg) {
@@ -7,7 +9,7 @@ export default {
       } else if (binding.modifiers?.end) {
         el.value = el.value.padEnd(binding.arg, chars)
       } else {
-        el.value = el.value.padStart(binding.arg, chars).padEnd(binding.arg, chars)
+        el.value = pad(el.value, binding.arg, chars)
       }
     }
   }
