@@ -1,8 +1,7 @@
 export default function (string, numbers = true) {
-  let regExp = '[\\p{L}'
   if (numbers) {
-    regExp += '\\p{N}'
+    return string.match(/[\p{L}\p{N}]+/gu)
+  } else {
+    return string.match(/[\p{L}]+/gu)
   }
-  regExp += ']+'
-  return string.match(new RegExp(regExp, 'gu'))
 }

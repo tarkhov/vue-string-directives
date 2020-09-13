@@ -9,7 +9,7 @@ import snake from './directives/snake'
 import truncate from './directives/truncate'
 import upper from './directives/upper'
 
-export default {
+const VueStringDirectives = {
   install (Vue) {
     Vue.directive('camel', camel)
     Vue.directive('capitalize', capitalize)
@@ -22,4 +22,10 @@ export default {
     Vue.directive('truncate', truncate)
     Vue.directive('upper', upper)
   }
+}
+
+export default VueStringDirectives
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(VueStringDirectives)
 }
