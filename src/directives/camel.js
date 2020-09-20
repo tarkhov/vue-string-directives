@@ -3,17 +3,17 @@ import words from '../helpers/words'
 
 export default {
   componentUpdated: function (el, binding) {
-    if (el.value.length && typeof binding.value === 'undefined' || binding.value) {
-      let list = words(el.value, binding.modifiers?.numbers)
+    if (el.value.length && (typeof binding.value === 'undefined' || binding.value)) {
+      let list = words(el.value, binding.modifiers?.numbers || binding.value?.numbers)
       if (list.length > 1) {
-        if (binding.modifiers?.first) {
+        if (binding.modifiers?.first || binding.value?.first) {
           list = list.map(function (value) {
-            return upperFirst(value, true)
+            return upperFirst(value)
           })
         } else {
-          let first = list.shift().toLowerCase()
+          let first = list.shift()
           list = list.map(function (value) {
-            return upperFirst(value, true)
+            return upperFirst(value)
           })
           list.unshift(first)
         }
