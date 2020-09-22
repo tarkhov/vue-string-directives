@@ -9,21 +9,24 @@ export default {
   output: [
     {
       file: 'dist/' + name + '.common.js',
-      exports: 'auto',
+      exports: 'named',
       format: 'cjs'
     },
     {
       file: 'dist/' + name + '.esm.js',
+      exports: 'named',
       format: 'es'
     },
     {
       file: 'dist/' + name + '.umd.js',
+      exports: 'named',
       name: 'VueStringDirectives',
       format: 'umd'
     },
     {
       file: 'dist/' + name + '.umd.min.js',
       format: 'umd',
+      exports: 'named',
       name: 'VueStringDirectives',
       plugins: [terser()]
     }

@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 function upperFirst (string) {
   var capitalize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var first = string.charAt(0).toUpperCase();
@@ -262,6 +264,21 @@ var upper = {
   }
 };
 
+var DirectivesMixin = {
+  directives: {
+    camel: camel,
+    capitalize: capitalize,
+    kebab: kebab,
+    lower: lower,
+    pad: pad$1,
+    repeat: repeat,
+    replace: replace,
+    snake: snake,
+    truncate: truncate$1,
+    upper: upper
+  }
+};
+
 var VueStringDirectives = {
   install: function install(Vue) {
     Vue.directive('camel', camel);
@@ -281,4 +298,15 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(VueStringDirectives);
 }
 
-module.exports = VueStringDirectives;
+exports.DirectivesMixin = DirectivesMixin;
+exports.camel = camel;
+exports.capitalize = capitalize;
+exports.default = VueStringDirectives;
+exports.kebab = kebab;
+exports.lower = lower;
+exports.pad = pad$1;
+exports.repeat = repeat;
+exports.replace = replace;
+exports.snake = snake;
+exports.truncate = truncate$1;
+exports.upper = upper;

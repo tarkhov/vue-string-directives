@@ -8,6 +8,7 @@ import replace from './directives/replace'
 import snake from './directives/snake'
 import truncate from './directives/truncate'
 import upper from './directives/upper'
+import DirectivesMixin from './mixins/DirectivesMixin'
 
 const VueStringDirectives = {
   install (Vue) {
@@ -22,6 +23,20 @@ const VueStringDirectives = {
     Vue.directive('truncate', truncate)
     Vue.directive('upper', upper)
   }
+}
+
+export {
+  camel,
+  capitalize,
+  kebab,
+  lower,
+  pad,
+  repeat,
+  replace,
+  snake,
+  truncate,
+  upper,
+  DirectivesMixin
 }
 
 export default VueStringDirectives

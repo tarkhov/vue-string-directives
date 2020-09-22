@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.VueStringDirectives = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VueStringDirectives = {}));
+}(this, (function (exports) { 'use strict';
 
   function upperFirst (string) {
     var capitalize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -266,6 +266,21 @@
     }
   };
 
+  var DirectivesMixin = {
+    directives: {
+      camel: camel,
+      capitalize: capitalize,
+      kebab: kebab,
+      lower: lower,
+      pad: pad$1,
+      repeat: repeat,
+      replace: replace,
+      snake: snake,
+      truncate: truncate$1,
+      upper: upper
+    }
+  };
+
   var VueStringDirectives = {
     install: function install(Vue) {
       Vue.directive('camel', camel);
@@ -285,6 +300,19 @@
     window.Vue.use(VueStringDirectives);
   }
 
-  return VueStringDirectives;
+  exports.DirectivesMixin = DirectivesMixin;
+  exports.camel = camel;
+  exports.capitalize = capitalize;
+  exports.default = VueStringDirectives;
+  exports.kebab = kebab;
+  exports.lower = lower;
+  exports.pad = pad$1;
+  exports.repeat = repeat;
+  exports.replace = replace;
+  exports.snake = snake;
+  exports.truncate = truncate$1;
+  exports.upper = upper;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

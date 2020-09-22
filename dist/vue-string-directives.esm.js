@@ -260,6 +260,21 @@ var upper = {
   }
 };
 
+var DirectivesMixin = {
+  directives: {
+    camel: camel,
+    capitalize: capitalize,
+    kebab: kebab,
+    lower: lower,
+    pad: pad$1,
+    repeat: repeat,
+    replace: replace,
+    snake: snake,
+    truncate: truncate$1,
+    upper: upper
+  }
+};
+
 var VueStringDirectives = {
   install: function install(Vue) {
     Vue.directive('camel', camel);
@@ -280,3 +295,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default VueStringDirectives;
+export { DirectivesMixin, camel, capitalize, kebab, lower, pad$1 as pad, repeat, replace, snake, truncate$1 as truncate, upper };
