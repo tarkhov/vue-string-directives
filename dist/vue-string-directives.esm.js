@@ -260,7 +260,7 @@ var upper = {
   }
 };
 
-var DirectivesMixin = {
+var StringDirectivesMixin = {
   directives: {
     camel: camel,
     capitalize: capitalize,
@@ -295,4 +295,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default VueStringDirectives;
-export { DirectivesMixin, camel, capitalize, kebab, lower, pad$1 as pad, repeat, replace, snake, truncate$1 as truncate, upper };
+export { StringDirectivesMixin, camel, capitalize, kebab, lower, pad$1 as pad, repeat, replace, snake, truncate$1 as truncate, upper };

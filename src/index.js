@@ -8,7 +8,7 @@ import replace from './directives/replace'
 import snake from './directives/snake'
 import truncate from './directives/truncate'
 import upper from './directives/upper'
-import DirectivesMixin from './mixins/DirectivesMixin'
+import StringDirectivesMixin from './mixins/StringDirectivesMixin'
 
 const VueStringDirectives = {
   install (Vue) {
@@ -36,7 +36,7 @@ export {
   snake,
   truncate,
   upper,
-  DirectivesMixin
+  StringDirectivesMixin
 }
 
 export default VueStringDirectives

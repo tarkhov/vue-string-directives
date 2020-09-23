@@ -264,7 +264,7 @@ var upper = {
   }
 };
 
-var DirectivesMixin = {
+var StringDirectivesMixin = {
   directives: {
     camel: camel,
     capitalize: capitalize,
@@ -298,7 +298,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(VueStringDirectives);
 }
 
-exports.DirectivesMixin = DirectivesMixin;
+exports.StringDirectivesMixin = StringDirectivesMixin;
 exports.camel = camel;
 exports.capitalize = capitalize;
 exports.default = VueStringDirectives;

@@ -1,7 +1,7 @@
 {
   "name": "vue-string-directives",
   "version": "0.1.0",
-  "description": "Vue string directives.",
+  "description": "Vue string directives library can change form input value dynamically.",
   "main": "dist/vue-string-directives.common.js",
   "module": "dist/vue-string-directives.esm.js",
   "unpkg": "dist/vue-string-directives.umd.min.js",
@@ -14,7 +14,9 @@
     "nuxt",
     "nuxtjs",
     "directive",
-    "string"
+    "string",
+    "form",
+    "input"
   ],
   "scripts": {
     "start": "rollup --config rollup.config.dev.js",
@@ -31,6 +33,9 @@
     "url": "https://github.com/tarkhov/vue-string-directives/issues"
   },
   "homepage": "https://tarkhov.github.io/vue-string-directives/",
+  "dependencies": {
+    "vue": "^2.x"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.5",
     "@babel/preset-env": "^7.11.5",

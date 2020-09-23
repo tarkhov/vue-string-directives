@@ -88,7 +88,7 @@
                     v-model="capitalize.value"
                     v-capitalize
                   )
-            h2.mb-3 Replace
+            h2.mb-3 Replacing
             b-row
               b-col(lg="4" md="6" cols="12")
                 .form-group
