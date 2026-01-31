@@ -217,12 +217,8 @@ Raplacing.
 
 ## Author
 
-**Alexander Tarkhov**
-
-* [Facebook](https://www.facebook.com/alextarkhov)
-* [Twitter](https://twitter.com/alextarkhov)
+* [Twitter](https://x.com/tarkhovich)
 * [Medium](https://medium.com/@tarkhov)
-* [LinkedIn](https://www.linkedin.com/in/tarkhov/)
 
 ## License
 
