@@ -1,7 +1,7 @@
 import truncate from '../helpers/truncate'
 
 export default {
-  componentUpdated: function (el, binding) {
+  updated: function (el, binding) {
     let length = el.value.length
     if (length) {
       let omission = '...'

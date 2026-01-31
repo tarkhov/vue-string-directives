@@ -1,3 +1,4 @@
+import { createApp } from 'vue'
 import camel from './directives/camel'
 import capitalize from './directives/capitalize'
 import kebab from './directives/kebab'
@@ -11,19 +12,22 @@ import upper from './directives/upper'
 import StringDirectivesMixin from './mixins/StringDirectivesMixin'
 
 const VueStringDirectives = {
-  install (Vue) {
-    Vue.directive('camel', camel)
-    Vue.directive('capitalize', capitalize)
-    Vue.directive('kebab', kebab)
-    Vue.directive('lower', lower)
-    Vue.directive('pad', pad)
-    Vue.directive('repeat', repeat)
-    Vue.directive('replace', replace)
-    Vue.directive('snake', snake)
-    Vue.directive('truncate', truncate)
-    Vue.directive('upper', upper)
+  install(app) {
+    app.directive('camel', camel)
+    app.directive('capitalize', capitalize)
+    app.directive('kebab', kebab)
+    app.directive('lower', lower)
+    app.directive('pad', pad)
+    app.directive('repeat', repeat)
+    app.directive('replace', replace)
+    app.directive('snake', snake)
+    app.directive('truncate', truncate)
+    app.directive('upper', upper)
   }
 }
+
+const app = createApp({})
+app.use(VueStringDirectives)
 
 export {
   camel,
@@ -40,7 +44,3 @@ export {
 }
 
 export default VueStringDirectives
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(VueStringDirectives)
-}

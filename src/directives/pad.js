@@ -1,7 +1,7 @@
 import pad from '../helpers/pad'
 
 export default {
-  componentUpdated: function (el, binding) {
+  updated: function (el, binding) {
     if (el.value.length) {
       let count = 0
       let chars = ' '

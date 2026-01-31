@@ -1,5 +1,5 @@
 export default {
-  componentUpdated: function (el, binding) {
+  updated: function (el, binding) {
     if (el.value.length && binding.value) {
       if (typeof binding.value === 'object') {
         if (binding.value.string && binding.value.count) {
