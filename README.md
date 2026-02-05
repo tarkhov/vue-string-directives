@@ -5,7 +5,6 @@ Vue string directives library can change form input value dynamically. All langu
 ### Contents
 
 1. [Compatibility](#compatibility)
-   1. [Version support](#version-support)
 2. [Installation](#installation)
    1. [NodeJS](#nodejs)
    2. [Manually](#manually)
@@ -22,15 +21,7 @@ Vue string directives library can change form input value dynamically. All langu
 
 Library | Version
 ------- | -------
-Vue | >= 2 and < 3
-
-We support browsers with ECMAScript 5 features, IE 10 and higher, more details can be founded here https://caniuse.com/es5 and here https://vuejs.org/v2/guide/installation.html#Compatibility-Note.
-
-### Version support
-
-Vue | Repo
-------- | -------
-2.x | [0.x](https://github.com/tarkhov/vue-string-directives/tree/0.x)
+Vue | >= 3.5
 
 ## Installation
 
@@ -42,10 +33,10 @@ npm install vue-string-directives
 
 ### Manually
 
-[Download](https://github.com/tarkhov/vue-string-directives/releases/download/v0.1.0/vue-string-directives.zip) package and unpack it or use following commands:
+[Download](https://github.com/tarkhov/vue-string-directives/releases/download/v1.0.0/vue-string-directives.zip) package and unpack it or use following commands:
 
 ```bash
-wget https://github.com/tarkhov/vue-string-directives/releases/download/v0.1.0/vue-string-directives.zip
+wget https://github.com/tarkhov/vue-string-directives/releases/download/v1.0.0/vue-string-directives.zip
 unzip vue-string-directives.zip
 ```
 

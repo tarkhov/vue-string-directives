@@ -1,10 +1,10 @@
-# https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+# https://github.com/github/gitignore/blob/main/Global/Linux.gitignore
 *~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
 
-# KDE directory preferences
+# Metadata left by Dolphin file manager, which comes with KDE Plasma
 .directory
 
 # Linux trash folder which might appear on any partition or disk
@@ -13,30 +13,22 @@
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+# Log files created by default by the nohup command
+nohup.out
 
-# https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
-# Swap
-[._]*.s[a-v][a-z]
-!*.svg  # comment out if you don't need vector files
-[._]*.sw[a-p]
-[._]s[a-rt-v][a-z]
-[._]ss[a-gi-z]
-[._]sw[a-p]
+# https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
 
-# Session
-Session.vim
-Sessionx.vim
+# Built Visual Studio Code Extensions
+*.vsix
 
-# Temporary
-.netrwhist
-*~
-# Auto-generated tag files
-tags
-# Persistent undo
-[._]*.un~
-
-
-# https://github.com/github/gitignore/blob/master/Node.gitignore
+# https://github.com/github/gitignore/blob/main/Node.gitignore
 # Logs
 logs
 *.log
@@ -92,11 +84,8 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
+# Optional stylelint cache
+.stylelintcache
 
 # Optional REPL history
 .node_repl_history
@@ -107,9 +96,10 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# dotenv environment variable files
 .env
-.env.test
+.env.*
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -121,7 +111,8 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-# dist
+dist
+.output
 
 # Gatsby files
 .cache/
@@ -132,6 +123,22 @@ out
 # vuepress build output
 .vuepress/dist
 
+# vuepress v2.x temp and cache directory
+.temp
+.cache
+
+# Sveltekit cache directory
+.svelte-kit/
+
+# vitepress build output
+**/.vitepress/dist
+
+# vitepress cache directory
+**/.vitepress/cache
+
+# Docusaurus cache and generated files
+.docusaurus
+
 # Serverless directories
 .serverless/
 
@@ -141,21 +148,30 @@ out
 # DynamoDB Local files
 .dynamodb/
 
+# Firebase cache directory
+.firebase/
+
 # TernJS port file
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
+# yarn v3
 .pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
+# Vite files
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/
 
-# https://github.com/github/gitignore/blob/master/community/JavaScript/Vue.gitignore
+# https://github.com/github/gitignore/blob/main/community/JavaScript/Vue.gitignore
 # gitignore template for Vue.js projects
 #
 # Recommended template: Node.gitignore
