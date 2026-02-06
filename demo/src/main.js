@@ -1,14 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'postboot/dist/css/postboot.css'
-import VueStringDirectives from './../../dist/vue-string-directives.common'
+import { VueStringDirectives } from './../../dist/vue-string-directives'
+import App from './App.vue'
 
-Vue.config.productionTip = false
-
-Vue.use(VueStringDirectives)
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App)
+app.use(VueStringDirectives)
+app.mount('#app')

@@ -10,10 +10,8 @@ Vue string directives library can change form input value dynamically. All langu
    2. [Manually](#manually)
 3. [Usage](#usage)
    1. [CLI](#cli)
-   2. [Nuxt](#nuxt)
-   3. [Local](#local)
-   4. [CDN](#cdn)
-4. [Directives](#directives)
+   2. [CDN](#cdn)
+4. [Examples](#examples)
 5. [Author](#author)
 6. [License](#license)
 
@@ -47,33 +45,21 @@ unzip vue-string-directives.zip
 Add following code to your `main.js` file created by Vue CLI:
 
 ```js
-import VueStringDirectives from 'vue-string-directives'
-
-Vue.use(VueStringDirectives)
-```
-
-Your `main.js` will look like this:
-
-```js
-import Vue from 'vue'
+import { createApp } from 'vue'
+import { VueStringDirectives } from 'vue-string-directives'
 import App from './App.vue'
-import VueStringDirectives from 'vue-string-directives'
 
-Vue.use(VueStringDirectives)
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App)
+app.use(VueStringDirectives)
+app.mount('#app')
 ```
 
 Alternatively you can use a specific directive to import it into a specific component:
 
 ```js
 import { upper, lower } from 'vue-string-directives'
+
 export default {
- name: 'MyComponent',
  directives: {
    upper,
    lower
@@ -85,49 +71,10 @@ Also you can import all directives to component:
 
 ```js
 import { StringDirectivesMixin } from 'vue-string-directives'
+
 export default {
- name: 'MyComponent',
  mixins: [StringDirectivesMixin]
 }
-```
-
-### Nuxt
-
-If you are using nuxt, you need to create a file **vue-string-directives.js** in the plugins folder of your nuxt project with the following content:
-
-```js
-import Vue from 'vue'
-import VueStringDirectives from 'vue-string-directives'
-
-Vue.use(VueStringDirectives)
-```
-
-Then add the following lines to the nuxt.config.js:
-
-```js
-plugins: [
- { src: '~plugins/vue-string-directives' }
-]
-```
-
-### Local
-
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Vue string directives</title>
-  </head>
-  <body>
-    <div id="app"></div>
-
-    <script src="dist/vue.min.js"></script>
-    <script src="vue-string-directives.umd.min.js"></script>
-  </body>
-</html>
 ```
 
 ### CDN
@@ -137,36 +84,42 @@ plugins: [
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue string directives</title>
   </head>
   <body>
     <div id="app"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.rawgit.com/tarkhov/vue-string-directives/v0.1.0/dist/vue-string-directives.umd.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.rawgit.com/tarkhov/vue-string-directives/v1.0.0/dist/vue-string-directives.umd.cjs"></script>
   </body>
 </html>
 ```
 
-## Directives
+## Examples
 
 Letter case.
 
 ```html
 <!-- Uppercase -->
+<!-- Input: uppercase. Output: UPPERCASE. -->
 <input type="text" v-model="text" v-upper>
+<!-- Input: uppercase. Output: Uppercase. -->
 <input type="text" v-model="text" v-upper.first>
+<!-- Input: uppercase. Output: Uppercase. -->
 <input type="text" v-model="text" v-upper.first.capitalize>
+<!-- Input: uppercase one two three. Output: Uppercase One Two Three. -->
 <input type="text" v-model="text" v-upper.first.every>
+<!-- Input: uppercase one two three. Output: Uppercase One Two Three. -->
 <input type="text" v-model="text" v-upper.first.capitalize.every>
 
 <!-- Lowercase -->
+<!-- Input: UPPERCASE. Output: uppercase. -->
 <input type="text" v-model="text" v-lower>
+<!-- Input: UPPERCASE. Output: uPPERCASE. -->
 <input type="text" v-model="text" v-lower.first>
 
 <!-- Capitalize -->
+<!-- Input: uppercase. Output: Uppercase. -->
 <input type="text" v-model="text" v-capitalize>
 ```
 
@@ -174,35 +127,49 @@ Word case.
 
 ```html
 <!-- Camelcase -->
+<!-- Input: camel case. Output: camelCase. -->
 <input type="text" v-model="text" v-camel>
+<!-- Input: camel case. Output: CamelCase. -->
 <input type="text" v-model="text" v-camel.first>
+<!-- Input: camel 123 case. Output: camel123Case. -->
 <input type="text" v-model="text" v-camel.numbers>
+<!-- Input: camel 123 case. Output: Camel123Case. -->
 <input type="text" v-model="text" v-camel.first.numbers>
 
 <!-- Kebabcase -->
+<!-- Input: kebab case. Output: kebab-case. -->
 <input type="text" v-model="text" v-kebab>
+<!-- Input: kebab 123 case. Output: kebab-123-case. -->
 <input type="text" v-model="text" v-kebab.numbers>
 
 <!-- Snakecase -->
+<!-- Input: snake case. Output: snake_case. -->
 <input type="text" v-model="text" v-snake>
+<!-- Input: snake 123 case. Output: snake_123_case. -->
 <input type="text" v-model="text" v-snake.numbers>
 ```
 
-Raplacing.
+Replacing.
 
 ```html
 <!-- Pad -->
+<!-- Input: pad. Output: ___pad____. -->
 <input type="text" v-model="text" v-pad:10="_">
+<!-- Input: pad. Output: _________pad. -->
 <input type="text" v-model="text" v-pad:10.start="_">
+<!-- Input: pad. Output: pad_______. -->
 <input type="text" v-model="text" v-pad:10.end="_">
 
 <!-- Repeat -->
+<!-- Input: repeat. Output: repeat-----. -->
 <input type="text" v-model="text" v-repeat:5="-">
 
 <!-- Replace -->
+<!-- Input: replace123. Output: replace---. -->
 <input type="text" v-model="text" v-replace="{ regexp: '[0-9]', flags: 'g', string: '-' }">
 
 <!-- Truncate -->
+<!-- Input: truncate. Output: trunc... -->
 <input type="text" v-model="text" v-truncate:5="'...'">
 ```
 
