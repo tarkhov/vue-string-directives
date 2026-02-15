@@ -1,139 +1,190 @@
-function r(t, e = !1) {
-  let u = t.charAt(0).toUpperCase(), a = t.slice(1);
-  return e && (a = a.toLowerCase()), `${u}${a}`;
+/*! 
+ * Vue String Directives v1.1.0
+ * Homepage (https://tarkhov.github.io/vue-string-directives/)
+ * Copyright 2020-2026 Tarkhov
+ * License: MIT
+ */
+function o(e, t = !1) {
+  let a = e.charAt(0).toUpperCase(), u = e.slice(1);
+  return t && (u = u.toLowerCase()), `${a}${u}`;
 }
-function d(t, e = !1) {
-  return e ? t.match(/[\p{L}\p{N}]+/gu) : t.match(/[\p{L}]+/gu);
+function j(e, t = { numbers: !1, lower: !1 }) {
+  const a = t?.numbers ? /[\p{L}\p{N}]+/gu : new RegExp("\\p{L}+", "gu");
+  let u = e.match(a);
+  if (u.length <= 1) return null;
+  let l = u.shift();
+  const n = t?.lower;
+  return n && (l = l.toLowerCase()), u = u.map((E) => o(E, n)), u.unshift(l), u.join("");
 }
-const v = {
-  updated: function(t, e) {
-    if (t.value.length && (typeof e.value > "u" || e.value)) {
-      let u = d(t.value, e.modifiers?.numbers || e.value?.numbers);
-      if (u.length > 1) {
-        if (e.modifiers?.first || e.value?.first)
-          u = u.map(function(a) {
-            return r(a);
-          });
-        else {
-          let a = u.shift();
-          u = u.map(function(l) {
-            return r(l);
-          }), u.unshift(a);
-        }
-        t.value = u.join("");
-      }
+function N(e, t = !1) {
+  let a = t ? /[\p{L}\p{N}]+/gu : new RegExp("\\p{L}+", "gu"), u = e.match(a);
+  return u.length <= 1 ? null : u.map((l) => l.toLowerCase()).join("");
+}
+function R(e, t = !1) {
+  let a = t ? /[\p{L}\p{N}-]+/gu : /[\p{L}-]+/gu, u = e.match(a);
+  return u.length <= 1 ? null : u.map((l) => l.toLowerCase()).join("-");
+}
+function k(e, t, a = " ") {
+  const u = Math.floor((t - e.length) / 2) + e.length;
+  return e.padStart(u, a).padEnd(t, a);
+}
+function S(e, t = { numbers: !1, lower: !1 }) {
+  const a = t?.numbers ? /[\p{L}\p{N}]+/gu : new RegExp("\\p{L}+", "gu");
+  let u = e.match(a);
+  return u.length <= 1 ? null : u.map((l) => o(l, t?.lower)).join("");
+}
+function _(e, t = !1) {
+  let a = t ? /[\p{L}\p{N}_]+/gu : /[\p{L}_]+/gu, u = e.match(a);
+  return u.length <= 1 ? null : u.map((l) => l.toLowerCase()).join("_");
+}
+function r(e, t = !1) {
+  return e.replace(new RegExp("\\p{L}+", "gu"), (a) => o(a, t));
+}
+function z(e, t = { numbers: !1, lower: !1 }) {
+  const a = t?.numbers ? /[\p{L}\p{N}-]+/gu : /[\p{L}-]+/gu;
+  let u = e.match(a);
+  return u.length <= 1 ? null : u.map((l) => o(l, t?.lower)).join("-");
+}
+function A(e, t = 32, a = "...") {
+  return e.substring(0, t) + a;
+}
+const s = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value || t.modifiers, u = j(e.value, a);
+      u !== null && (e.value = u);
+    }
+  }
+}, c = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.modifiers?.lower || t.value?.lower;
+      e.value = o(e.value, a);
+    }
+  }
+}, v = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.modifiers?.numbers || t.value?.numbers, u = N(e.value, a);
+      u !== null && (e.value = u);
+    }
+  }
+}, i = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.modifiers?.numbers || t.value?.numbers, u = R(e.value, a);
+      u !== null && (e.value = u);
     }
   }
 }, f = {
-  updated: function(t, e) {
-    t.value.length && (typeof e.value > "u" || e.value) && (t.value = r(t.value, !0));
-  }
-};
-function L(t, e = !1) {
-  return e ? t.match(/[\p{L}\p{N}-]+/gu) : t.match(/[\p{L}-]+/gu);
-}
-const o = {
-  updated: function(t, e) {
-    if (t.value.length && (typeof e.value > "u" || e.value)) {
-      let u = L(t.value, e.modifiers?.numbers || e.value?.numbers);
-      u.length > 1 && (u = u.map(function(a) {
-        return a.toLowerCase();
-      }), t.value = u.join("-"));
-    }
-  }
-}, s = {
-  updated: function(t, e) {
-    t.value.length && (typeof e.value > "u" || e.value) && (e.modifiers?.first || e.value?.first ? t.value = t.value.charAt(0).toLowerCase() + t.value.slice(1) : t.value = t.value.toLowerCase());
-  }
-};
-function y(t, e, u = " ") {
-  const a = Math.floor((e - t.length) / 2) + t.length;
-  return t.padStart(a, u).padEnd(e, u);
-}
-const c = {
-  updated: function(t, e) {
-    if (t.value.length) {
-      let u = 0, a = " ";
-      e.value && (typeof e.value == "object" ? e.value.chars && e.value.count && (u = e.value.count, a = e.value.chars) : (u = e.arg, a = e.value)), e.modifiers?.start || e.value?.start ? t.value = t.value.padStart(u, a) : e.modifiers?.end || e.value?.end ? t.value = t.value.padEnd(u, a) : t.value = y(t.value, u, a);
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value || t.modifiers;
+      e.value = a?.first ? e.value.charAt(0).toLowerCase() + e.value.slice(1) : e.value.toLowerCase();
     }
   }
 }, p = {
-  updated: function(t, e) {
-    t.value.length && e.value && (typeof e.value == "object" ? e.value.string && e.value.count && (t.value = t.value + e.value.string.repeat(e.value.count)) : e.arg && (t.value = t.value + e.value.repeat(e.arg)));
-  }
-}, i = {
-  updated: function(t, e) {
-    t.value.length && e.value && e.value.regexp && (t.value = t.value.replace(new RegExp(e.value.regexp, e.value.flags), e.value.string || ""));
-  }
-};
-function w(t, e = !1) {
-  return e ? t.match(/[\p{L}\p{N}_]+/gu) : t.match(/[\p{L}_]+/gu);
-}
-const m = {
-  updated: function(t, e) {
-    if (t.value.length && (typeof e.value > "u" || e.value)) {
-      let u = w(t.value, e.modifiers?.numbers || e.value?.numbers);
-      u.length > 1 && (u = u.map(function(a) {
-        return a.toLowerCase();
-      }), t.value = u.join("_"));
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value?.count || t.arg, u = t.value?.chars || t.value;
+      t.modifiers?.start || t.value?.start ? e.value = e.value.padStart(a, u) : t.modifiers?.end || t.value?.end ? e.value = e.value.padEnd(a, u) : e.value = k(e.value, a, u);
     }
   }
-};
-function C(t, e = 32, u = "...") {
-  return t.substring(0, e) + u;
-}
-const n = {
-  updated: function(t, e) {
-    let u = t.value.length;
-    if (u) {
-      let a = "...", l = e.arg;
-      e.value && (typeof e.value == "object" ? e.value.count && e.value.omission && (l = e.value.count, a = e.value.omission) : a = e.value), u > l && (t.value = C(t.value, l, a));
+}, m = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value || t.modifiers, u = S(e.value, a);
+      u !== null && (e.value = u);
     }
   }
-};
-function j(t, e = !1) {
-  return t.replace(new RegExp("\\p{L}+", "gu"), function(u) {
-    return r(u, e);
-  });
-}
-const h = {
-  updated: function(t, e) {
-    if (t.value.length && (typeof e.value > "u" || e.value))
-      if (e.modifiers?.first || e.value?.first) {
-        const u = e.modifiers?.capitalize || e.value?.capitalize;
-        e.modifiers?.every || e.value?.every ? t.value = j(t.value, u) : t.value = r(t.value, u);
-      } else
-        t.value = t.value.toUpperCase();
+}, d = {
+  updated: function(e, t) {
+    e.value.length && t.value && (t.value?.string && t.value?.count ? e.value = e.value + t.value.string.repeat(t.value.count) : t.arg && (e.value = e.value + t.value.repeat(t.arg)));
   }
-}, k = {
-  directives: {
-    camel: v,
-    capitalize: f,
-    kebab: o,
-    lower: s,
-    pad: c,
-    repeat: p,
-    replace: i,
-    snake: m,
-    truncate: n,
-    upper: h
+}, h = {
+  updated: function(e, t) {
+    e.value.length && (e.value = e.value.replace(new RegExp(t.value.regexp, t.value.flags), t.value.string || ""));
+  }
+}, w = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.modifiers?.numbers || t.value?.numbers, u = _(e.value, a);
+      u !== null && (e.value = u);
+    }
+  }
+}, g = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.modifiers?.lower || t.value?.lower, u = r(e.value, a);
+      u !== null && (e.value = u);
+    }
+  }
+}, L = {
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value || t.modifiers, u = z(e.value, a);
+      u !== null && (e.value = u);
+    }
+  }
+}, C = {
+  updated: function(e, t) {
+    let a = e.value.length;
+    if (a) {
+      let u = t.value?.omission || t.value, l = t.value?.count || t.arg;
+      a > l && (e.value = A(e.value, l, u));
+    }
   }
 }, x = {
-  install(t) {
-    t.directive("camel", v), t.directive("capitalize", f), t.directive("kebab", o), t.directive("lower", s), t.directive("pad", c), t.directive("repeat", p), t.directive("replace", i), t.directive("snake", m), t.directive("truncate", n), t.directive("upper", h);
+  updated: function(e, t) {
+    if (e.value.length) {
+      const a = t.value || t.modifiers;
+      if (a?.first)
+        if (a?.every) {
+          const u = r(e.value);
+          u !== null && (e.value = u);
+        } else
+          e.value = o(e.value);
+      else
+        e.value = e.value.toUpperCase();
+    }
+  }
+}, D = {
+  directives: {
+    camel: s,
+    capitalize: c,
+    flat: v,
+    kebab: i,
+    lower: f,
+    pad: p,
+    pascal: m,
+    repeat: d,
+    replace: h,
+    snake: w,
+    title: g,
+    train: L,
+    truncate: C,
+    upper: x
+  }
+}, M = {
+  install(e) {
+    e.directive("camel", s), e.directive("capitalize", c), e.directive("flat", v), e.directive("kebab", i), e.directive("lower", f), e.directive("pad", p), e.directive("pascal", m), e.directive("repeat", d), e.directive("replace", h), e.directive("snake", w), e.directive("title", g), e.directive("train", L), e.directive("truncate", C), e.directive("upper", x);
   }
 };
 export {
-  k as StringDirectivesMixin,
-  x as VueStringDirectives,
-  v as camel,
-  f as capitalize,
-  o as kebab,
-  s as lower,
-  c as pad,
-  p as repeat,
-  i as replace,
-  m as snake,
-  n as truncate,
-  h as upper
+  D as StringDirectivesMixin,
+  M as VueStringDirectives,
+  s as camel,
+  c as capitalize,
+  v as flat,
+  i as kebab,
+  f as lower,
+  p as pad,
+  m as pascal,
+  d as repeat,
+  h as replace,
+  w as snake,
+  g as title,
+  L as train,
+  C as truncate,
+  x as upper
 };

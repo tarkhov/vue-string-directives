@@ -1,15 +1,11 @@
-import kebabWords from '../helpers/kebabWords'
+import { kebabCase } from 'string-filters'
 
 export default {
   updated: function (el, binding) {
-    if (el.value.length && (typeof binding.value === 'undefined' || binding.value)) {
-      let list = kebabWords(el.value, binding.modifiers?.numbers || binding.value?.numbers)
-      if (list.length > 1) {
-        list = list.map(function (value) {
-          return value.toLowerCase()
-        })
-        el.value = list.join('-')
-      }
+    if (el.value.length) {
+      const numbers = binding.modifiers?.numbers || binding.value?.numbers
+      const value = kebabCase(el.value, numbers)
+      if (value !== null) el.value = value
     }
   }
 }

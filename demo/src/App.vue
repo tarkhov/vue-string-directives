@@ -2,52 +2,72 @@
 import { reactive } from 'vue'
 
 const camel = defineModel('camel')
-const kebab = defineModel('kebab')
-const snake = defineModel('snake')
-const upper = defineModel('upper')
-const lower = defineModel('lower')
 const capitalize = defineModel('capitalize')
+const flat = defineModel('flat')
+const kebab = defineModel('kebab')
+const lower = defineModel('lower')
 const pad = defineModel('pad')
+const pascal = defineModel('pascal')
 const repeat = defineModel('repeat')
 const replace = defineModel('replace')
+const snake = defineModel('snake')
+const title = defineModel('title')
+const train = defineModel('train')
 const truncate = defineModel('truncate')
+const upper = defineModel('upper')
 const modifiers = reactive({
   camel: {
-    first: false,
+    numbers: false,
+    lower: false
+  },
+  capitalize: {
+    lower: false
+  },
+  flat: {
     numbers: false
   },
   kebab: {
     numbers: false
   },
-  snake: {
-    numbers: false
-  },
-  upper: {
-    first: false,
-    capitalize: false,
-    every: false
-  },
   lower: {
     first: false
   },
   pad: {
-    count: 0,
-    chars: ' ',
+    count: 10,
+    chars: '_',
     start: false,
     end: false
   },
+  pascal: {
+    numbers: false,
+    lower: false
+  },
   repeat: {
-    count: 0,
-    string: ''
+    count: 5,
+    string: '-'
   },
   replace: {
-    regexp: '',
+    regexp: '[0-9]',
     flags: 'g',
-    string: ''
+    string: '-'
+  },
+  snake: {
+    numbers: false
+  },
+  title: {
+    lower: false
+  },
+  train: {
+    numbers: false,
+    lower: false
   },
   truncate: {
-    count: '',
+    count: 3,
     omission: '...'
+  },
+  upper: {
+    first: false,
+    every: false
   }
 })
 </script>
@@ -60,7 +80,7 @@ const modifiers = reactive({
         .row.mb-3
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Camelcase]
+              label.form-label #[b Camel case]
               input.form-control(
                 type="text"
                 v-model="camel"
@@ -68,20 +88,34 @@ const modifiers = reactive({
               )
             .mb-3
               .form-check.form-check-inline
-                input.form-check-input#camel-first(
-                  type="checkbox"
-                  v-model="modifiers.camel.first"
-                )
-                label.form-check-label(for="camel-first") First
-              .form-check.form-check-inline
                 input.form-check-input#camel-numbers(
                   type="checkbox"
                   v-model="modifiers.camel.numbers"
                 )
                 label.form-check-label(for="camel-numbers") Numbers
+              .form-check.form-check-inline
+                input.form-check-input#camel-lower(
+                  type="checkbox"
+                  v-model="modifiers.camel.lower"
+                )
+                label.form-check-label(for="camel-lower") Lower
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Kebabcase]
+              label.form-label #[b Flat case]
+              input.form-control(
+                type="text"
+                v-model="flat"
+                v-flat="modifiers.flat"
+              )
+            .mb-3.form-check.form-check-inline
+              input.form-check-input#flat-numbers(
+                type="checkbox"
+                v-model="modifiers.flat.numbers"
+              )
+              label.form-check-label(for="flat-numbers") Numbers
+          .col-12.col-md-6.col-lg-4
+            .mb-3
+              label.form-label #[b Kebab case]
               input.form-control(
                 type="text"
                 v-model="kebab"
@@ -95,7 +129,63 @@ const modifiers = reactive({
               label.form-check-label(for="kebab-numbers") Numbers
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Snakecase]
+              label.form-label #[b Pascal case]
+              input.form-control(
+                type="text"
+                v-model="pascal"
+                v-pascal="modifiers.pascal"
+              )
+            .mb-3
+              .form-check.form-check-inline
+                input.form-check-input#pascal-numbers(
+                  type="checkbox"
+                  v-model="modifiers.pascal.numbers"
+                )
+                label.form-check-label(for="pascal-numbers") Numbers
+              .form-check.form-check-inline
+                input.form-check-input#pascal-lower(
+                  type="checkbox"
+                  v-model="modifiers.pascal.lower"
+                )
+                label.form-check-label(for="pascal-lower") Lower
+          .col-12.col-md-6.col-lg-4
+            .mb-3
+              label.form-label #[b Title case]
+              input.form-control(
+                type="text"
+                v-model="title"
+                v-title="modifiers.title"
+              )
+            .mb-3.form-check.form-check-inline
+              input.form-check-input#title-lower(
+                type="checkbox"
+                v-model="modifiers.title.lower"
+              )
+              label.form-check-label(for="title-lower") Lower
+          .col-12.col-md-6.col-lg-4
+            .mb-3
+              label.form-label #[b Train case]
+              input.form-control(
+                type="text"
+                v-model="train"
+                v-train="modifiers.train"
+              )
+            .mb-3
+              .form-check.form-check-inline
+                input.form-check-input#train-numbers(
+                  type="checkbox"
+                  v-model="modifiers.train.numbers"
+                )
+                label.form-check-label(for="train-numbers") Numbers
+              .form-check.form-check-inline
+                input.form-check-input#train-lower(
+                  type="checkbox"
+                  v-model="modifiers.train.lower"
+                )
+                label.form-check-label(for="train-lower") Lower
+          .col-12.col-md-6.col-lg-4
+            .mb-3
+              label.form-label #[b Snake case]
               input.form-control(
                 type="text"
                 v-model="snake"
@@ -111,36 +201,21 @@ const modifiers = reactive({
         .row.mb-3
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Uppercase]
+              label.form-label #[b Capitalize]
               input.form-control(
                 type="text"
-                v-model="upper"
-                v-upper="modifiers.upper"
+                v-model="capitalize"
+                v-capitalize="modifiers.capitalize"
               )
-            .mb-3
-              .form-check.form-check-inline
-                input.form-check-input#upper-first(
-                  type="checkbox"
-                  v-model="modifiers.upper.first"
-                )
-                label.form-check-label(for="upper-first") First
-              .form-check.form-check-inline
-                input.form-check-input#upper-capitalize(
-                  type="checkbox"
-                  v-model="modifiers.upper.capitalize"
-                  :disabled="!modifiers.upper.first"
-                )
-                label.form-check-label(for="upper-capitalize") Capitalize
-              .form-check.form-check-inline
-                input.form-check-input#upper-every(
-                  type="checkbox"
-                  v-model="modifiers.upper.every"
-                  :disabled="!modifiers.upper.first"
-                )
-                label.form-check-label(for="upper-every") Every 
+            .mb-3.form-check.form-check-inline
+              input.form-check-input#capitalize-lower(
+                type="checkbox"
+                v-model="modifiers.capitalize.lower"
+              )
+              label.form-check-label(for="capitalize-lower") Lower
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Lowercase]
+              label.form-label #[b Lower case]
               input.form-control(
                 type="text"
                 v-model="lower"
@@ -154,12 +229,25 @@ const modifiers = reactive({
               label.form-check-label(for="lower-first") First
           .col-12.col-md-6.col-lg-4
             .mb-3
-              label.form-label #[b Capitalize]
+              label.form-label #[b Upper case]
               input.form-control(
                 type="text"
-                v-model="capitalize"
-                v-capitalize
+                v-model="upper"
+                v-upper="modifiers.upper"
               )
+            .mb-3
+              .form-check.form-check-inline
+                input.form-check-input#upper-first(
+                  type="checkbox"
+                  v-model="modifiers.upper.first"
+                )
+                label.form-check-label(for="upper-first") First
+              .form-check.form-check-inline
+                input.form-check-input#upper-every(
+                  type="checkbox"
+                  v-model="modifiers.upper.every"
+                )
+                label.form-check-label(for="upper-every") Every
         h2.mb-3 Replacing
         .row.mb-3
           .col-12.col-md-6.col-lg-4
@@ -250,6 +338,7 @@ const modifiers = reactive({
                   v-truncate="modifiers.truncate"
                   placeholder="Text"
                 )
+                
                 input.form-control(
                   type="text"
                   v-model="modifiers.truncate.omission"

@@ -1,10 +1,11 @@
-import { capitalize } from 'string-filters'
+import { titleCase } from 'string-filters'
 
 export default {
   updated: function (el, binding) {
     if (el.value.length) {
       const lower = binding.modifiers?.lower || binding.value?.lower
-      el.value = capitalize(el.value, lower)
+      const value = titleCase(el.value, lower)
+      if (value !== null) el.value = value
     }
   }
 }

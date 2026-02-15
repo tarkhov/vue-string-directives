@@ -1,8 +1,11 @@
+import { pascalCase } from 'string-filters'
+
 export default {
   updated: function (el, binding) {
     if (el.value.length) {
       const options = binding.value || binding.modifiers
-      el.value = (options?.first) ? el.value.charAt(0).toLowerCase() + el.value.slice(1) : el.value.toLowerCase()
+      const value = pascalCase(el.value, options)
+      if (value !== null) el.value = value
     }
   }
 }

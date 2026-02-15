@@ -1,9 +1,11 @@
 {
   "name": "vue-string-directives",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vue string directives library can change form input value dynamically.",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/vue-string-directives.umd.cjs",
   "module": "./dist/vue-string-directives.js",
   "exports": {
@@ -13,16 +15,34 @@
     }
   },
   "keywords": [
-    "js",
-    "javascript",
     "vue",
     "vuejs",
+    "vue3",
     "nuxt",
     "nuxtjs",
+    "vue-directive",
+    "directives",
     "directive",
-    "string",
     "form",
-    "input"
+    "input",
+    "string",
+    "string-manipulation",
+    "text-formatting",
+    "trim",
+    "lowercase",
+    "uppercase",
+    "capitalize",
+    "slugify",
+    "truncate",
+    "mask",
+    "utility",
+    "validation",
+    "transformation",
+    "sanitize",
+    "input-mask",
+    "javascript",
+    "js",
+    "typescript"
   ],
   "repository": {
     "type": "git",
@@ -40,10 +60,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "string-filters": "^0.3.3",
     "vue": "^3.5.24"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-plugin-banner": "^0.8.1"
   }
 }
