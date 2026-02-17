@@ -42,10 +42,10 @@ npm install vue-string-directives
 
 ### Manually
 
-[Download](https://github.com/tarkhov/vue-string-directives/releases/download/v1.0.0/vue-string-directives.zip) package and unpack it or use following commands:
+[Download](https://github.com/tarkhov/vue-string-directives/releases/download/v1.2.0/vue-string-directives.zip) package and unpack it or use following commands:
 
 ```bash
-wget https://github.com/tarkhov/vue-string-directives/releases/download/v1.0.0/vue-string-directives.zip
+wget https://github.com/tarkhov/vue-string-directives/releases/download/v1.2.0/vue-string-directives.zip
 unzip vue-string-directives.zip
 ```
 
