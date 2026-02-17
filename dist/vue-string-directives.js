@@ -1,5 +1,5 @@
 /*! 
- * Vue String Directives v1.2.0
+ * Vue String Directives v1.2.1
  * Homepage (https://tarkhov.github.io/vue-string-directives/)
  * Copyright 2020-2026 Tarkhov
  * License: MIT
