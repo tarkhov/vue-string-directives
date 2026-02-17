@@ -1,4 +1,4 @@
-# Vue string directives
+# Vue String Directives
 
 Vue string directives library can change form input value dynamically. All languages are supported.
 

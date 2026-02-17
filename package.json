@@ -6,6 +6,7 @@
   "files": [
     "dist"
   ],
+  "types": "./dist/types/main.d.ts",
   "main": "./dist/vue-string-directives.umd.cjs",
   "module": "./dist/vue-string-directives.js",
   "exports": {
