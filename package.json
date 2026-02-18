@@ -1,6 +1,6 @@
 {
   "name": "vue-string-directives",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Vue string directives library can change form input value dynamically.",
   "type": "module",
   "files": [
@@ -62,7 +62,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "string-filters": "^0.3.6",
+    "string-filters": "^0.3.7",
     "vue": "^3.5.24"
   },
   "devDependencies": {

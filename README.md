@@ -7,7 +7,6 @@ Vue string directives library can change form input value dynamically. All langu
 1. [Compatibility](#compatibility)
 2. [Installation](#installation)
    1. [NPM](#npm)
-   2. [Manually](#manually)
 3. [Usage](#usage)
    1. [Camel case](#camel-case)
    2. [Capitalize](#capitalize)
@@ -38,15 +37,6 @@ Vue | >= 3.5
 
 ```bash
 npm install vue-string-directives
-```
-
-### Manually
-
-[Download](https://github.com/tarkhov/vue-string-directives/releases/download/v1.2.1/vue-string-directives.zip) package and unpack it or use following commands:
-
-```bash
-wget https://github.com/tarkhov/vue-string-directives/releases/download/v1.2.1/vue-string-directives.zip
-unzip vue-string-directives.zip
 ```
 
 ## Usage
